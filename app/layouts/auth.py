@@ -1,5 +1,5 @@
 """Auth pages — Sign In / Sign Up matching Purity UI."""
-from dash import html
+from dash import html, dcc
 
 
 def create_signin_layout():
@@ -13,11 +13,11 @@ def create_signin_layout():
                     html.P("Enter your email and password to sign in", style={"color": "var(--pu-text-muted)", "fontSize": "14px", "marginBottom": "32px"}),
                     html.Div([
                         html.Label("Email", style={"color": "var(--pu-text)", "fontSize": "14px", "fontWeight": "500", "marginBottom": "8px", "display": "block"}),
-                        html.Input(type="email", placeholder="Your email address", className="pu-input", style={"marginBottom": "24px"}),
+                        dcc.Input(type="email", placeholder="Your email address", className="pu-input", style={"marginBottom": "24px"}),
                     ]),
                     html.Div([
                         html.Label("Password", style={"color": "var(--pu-text)", "fontSize": "14px", "fontWeight": "500", "marginBottom": "8px", "display": "block"}),
-                        html.Input(type="password", placeholder="Your password", className="pu-input", style={"marginBottom": "24px"}),
+                        dcc.Input(type="password", placeholder="Your password", className="pu-input", style={"marginBottom": "24px"}),
                     ]),
                     html.Div([
                         html.Button(className="pu-theme-toggle active", id="remember-toggle"),
@@ -59,15 +59,15 @@ def create_signup_layout():
                     html.P("Enter your email and password to register", style={"color": "var(--pu-text-muted)", "fontSize": "14px", "marginBottom": "32px"}),
                     html.Div([
                         html.Label("Name", style={"color": "var(--pu-text)", "fontSize": "14px", "fontWeight": "500", "marginBottom": "8px", "display": "block"}),
-                        html.Input(type="text", placeholder="Your full name", className="pu-input", style={"marginBottom": "24px"}),
+                        dcc.Input(type="text", placeholder="Your full name", className="pu-input", style={"marginBottom": "24px"}),
                     ]),
                     html.Div([
                         html.Label("Email", style={"color": "var(--pu-text)", "fontSize": "14px", "fontWeight": "500", "marginBottom": "8px", "display": "block"}),
-                        html.Input(type="email", placeholder="Your email address", className="pu-input", style={"marginBottom": "24px"}),
+                        dcc.Input(type="email", placeholder="Your email address", className="pu-input", style={"marginBottom": "24px"}),
                     ]),
                     html.Div([
                         html.Label("Password", style={"color": "var(--pu-text)", "fontSize": "14px", "fontWeight": "500", "marginBottom": "8px", "display": "block"}),
-                        html.Input(type="password", placeholder="Your password", className="pu-input", style={"marginBottom": "24px"}),
+                        dcc.Input(type="password", placeholder="Your password", className="pu-input", style={"marginBottom": "24px"}),
                     ]),
                     html.Div([
                         html.Button(className="pu-theme-toggle active", id="terms-toggle"),

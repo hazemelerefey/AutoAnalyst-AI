@@ -31,6 +31,9 @@ app = dash.Dash(
     suppress_callback_exceptions=True,
     title="AutoAnalyst AI — Purity Dashboard",
     meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}],
+    external_stylesheets=[
+        "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css",
+    ],
 )
 
 server = app.server
@@ -50,7 +53,7 @@ app.layout = html.Div([
         # Page content
         html.Div(id="page-content", className="pu-main-content"),
     ], className="pu-main-panel"),
-], id="app-root")
+])
 
 
 # ── Router callback ─────────────────────────────────────────
@@ -68,8 +71,8 @@ def display_page(pathname):
     # Auth pages — no sidebar/navbar
     if pathname in ("/auth/signin", "/auth/signup"):
         if pathname == "/auth/signup":
-            return create_signup_layout(), None, None
-        return create_signin_layout(), None, None
+            return create_signup_layout(), html.Div(), html.Div()
+        return create_signin_layout(), html.Div(), html.Div()
 
     # Determine breadcrumb
     page_map = {
@@ -98,15 +101,6 @@ def display_page(pathname):
     navbar = AdminNavbar(breadcrumb_page=page_name)
 
     return layout_fn(), sidebar, navbar
-
-
-# ── Theme toggle callback ───────────────────────────────────
-@callback(
-    Output("app-root", "data-theme"),
-    Input("theme-store", "data"),
-)
-def toggle_theme(theme):
-    return theme
 
 
 # ── Import and register page callbacks ──────────────────────

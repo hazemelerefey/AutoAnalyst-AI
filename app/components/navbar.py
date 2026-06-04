@@ -1,5 +1,5 @@
 """Purity UI AdminNavbar — exact replica."""
-from dash import html
+from dash import html, dcc
 
 
 def AdminNavbar(breadcrumb_page="Dashboard", breadcrumb_section="Pages"):
@@ -22,7 +22,7 @@ def AdminNavbar(breadcrumb_page="Dashboard", breadcrumb_section="Pages"):
                     html.Div(
                         [
                             html.I(className="bi bi-search", style={"color": "var(--pu-text-muted)"}),
-                            html.Input(type="text", placeholder="Type here...", className="pu-search-bar-input"),
+                            dcc.Input(type="text", placeholder="Type here...", className="pu-search-bar-input"),
                         ],
                         className="pu-search-bar",
                     ),
