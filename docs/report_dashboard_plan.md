@@ -88,7 +88,7 @@ Generated: [timestamp]
 ## 2. Dashboard Page Structure
 
 **Framework:** Dash by Plotly (production-grade, Python-only, interactive charts)
-**Theme:** Dark mode (professional, modern)
+**Theme:** Dark mode — GitHub Dark (#0d1117 bg, #161b22 cards, #58a6ff accent, Inter font)
 **Layout:** Sidebar navigation + main content area
 
 ### Page Map
