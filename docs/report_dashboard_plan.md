@@ -259,7 +259,7 @@ result = run_analysis_pipeline(df, PipelineConfig(target_column=target))
 | Framework | Dash 2.x | Python-only, production-grade, callback-based |
 | Charts | Plotly 5.x | Interactive, publication-quality, dark theme |
 | UI Kit | Dash Bootstrap Components | Professional cards, grids, modals |
-| Theme | Dark mode (plotly_dark + custom CSS) | Modern, professional appearance |
+| Theme | Dark mode (plotly_dark + custom CSS) | GitHub Dark palette (#0d1117 bg, #161b22 cards, #58a6ff accent, #30363d borders), Inter font, 8px border radius |
 | Server | Gunicorn | Production WSGI |
 | Deploy | Docker + Railway/Render | One-click cloud deployment |
 | Cache | Flask-Caching | Avoid re-running pipeline on page refresh |
