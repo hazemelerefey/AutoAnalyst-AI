@@ -1,0 +1,778 @@
+/* ============================================================
+   AutoAnalyst AI — Purity UI Theme (Dash)
+   Exact replica of creativetimofficial/purity-ui-dashboard
+   ============================================================ */
+
+/* ── Google Fonts ──────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* ── CSS Variables (Purity UI Tokens) ─────────────────────── */
+:root {
+  /* Colors — matches Chakra UI teal/gray palette exactly */
+  --pu-teal-50:  #E6FFFA;
+  --pu-teal-100: #B2F5EA;
+  --pu-teal-200: #81E6D9;
+  --pu-teal-300: #38B2AC;
+  --pu-teal-400: #319795;
+  --pu-teal-500: #2C7A7B;
+  --pu-teal-600: #285E61;
+  --pu-teal-700: #234E52;
+  --pu-teal-800: #1D4044;
+  --pu-teal-900: #1A3538;
+
+  --pu-gray-50:  #F7FAFC;
+  --pu-gray-100: #EDF2F7;
+  --pu-gray-200: #E2E8F0;
+  --pu-gray-300: #CBD5E0;
+  --pu-gray-400: #A0AEC0;
+  --pu-gray-500: #718096;
+  --pu-gray-600: #4A5568;
+  --pu-gray-700: #1F2733;
+  --pu-gray-800: #1A202C;
+  --pu-gray-900: #171923;
+
+  --pu-green-400: #48BB78;
+  --pu-red-400:   #F56565;
+  --pu-white:     #FFFFFF;
+  --pu-black:     #000000;
+
+  /* Theme tokens — Light mode (default) */
+  --pu-bg:            var(--pu-gray-50);
+  --pu-card-bg:       var(--pu-white);
+  --pu-sidebar-bg:    var(--pu-white);
+  --pu-text:          var(--pu-gray-700);
+  --pu-text-muted:    var(--pu-gray-400);
+  --pu-accent:        var(--pu-teal-300);
+  --pu-accent-hover:  var(--pu-teal-400);
+  --pu-border:        var(--pu-gray-200);
+  --pu-shadow:        0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+  --pu-shadow-sm:     0 2px 4px rgba(50, 50, 93, 0.05), 0 1px 2px rgba(0, 0, 0, 0.05);
+  --pu-radius:        15px;
+  --pu-radius-sm:     8px;
+  --pu-sidebar-width: 260px;
+  --pu-navbar-height: 75px;
+  --pu-transition:    all 0.2s linear;
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+  --pu-bg:            var(--pu-gray-800);
+  --pu-card-bg:       var(--pu-gray-700);
+  --pu-sidebar-bg:    var(--pu-gray-700);
+  --pu-text:          var(--pu-white);
+  --pu-text-muted:    var(--pu-gray-400);
+  --pu-border:        var(--pu-gray-600);
+  --pu-shadow:        0 7px 14px rgba(0, 0, 0, 0.3), 0 3px 6px rgba(0, 0, 0, 0.2);
+  --pu-shadow-sm:     0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ── Global Reset ─────────────────────────────────────────── */
+body {
+  font-family: 'Roboto', sans-serif !important;
+  background-color: var(--pu-bg) !important;
+  color: var(--pu-text) !important;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  font-family: 'Roboto', sans-serif !important;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* ── Sidebar ──────────────────────────────────────────────── */
+.pu-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--pu-sidebar-width);
+  max-width: var(--pu-sidebar-width);
+  height: 100vh;
+  background-color: var(--pu-sidebar-bg);
+  padding: 25px 20px;
+  z-index: 100;
+  transition: var(--pu-transition);
+  overflow-y: auto;
+  border-right: 1px solid var(--pu-border);
+}
+
+.pu-sidebar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  font-size: 11px;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--pu-text);
+}
+
+.pu-sidebar-logo svg {
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+}
+
+.pu-sidebar-logo span {
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+/* ── Nav Links ────────────────────────────────────────────── */
+.pu-nav-link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border-radius: var(--pu-radius);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--pu-transition);
+  color: var(--pu-text-muted);
+}
+
+.pu-nav-link:hover {
+  background-color: var(--pu-gray-100);
+}
+
+[data-theme="dark"] .pu-nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.pu-nav-link.active {
+  background-color: var(--pu-card-bg);
+  color: var(--pu-text);
+  box-shadow: var(--pu-shadow-sm);
+}
+
+.pu-nav-link .pu-icon-box {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--pu-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  flex-shrink: 0;
+  background-color: var(--pu-card-bg);
+  color: var(--pu-accent);
+}
+
+.pu-nav-link.active .pu-icon-box {
+  background-color: var(--pu-accent);
+  color: var(--pu-white);
+}
+
+.pu-nav-link span {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ── Category Header ──────────────────────────────────────── */
+.pu-nav-category {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--pu-text);
+  text-transform: uppercase;
+  padding: 12px 16px;
+  margin-bottom: 4px;
+  letter-spacing: 1px;
+}
+
+/* ── Main Panel ───────────────────────────────────────────── */
+.pu-main-panel {
+  margin-left: var(--pu-sidebar-width);
+  min-height: 100vh;
+  background-color: var(--pu-bg);
+  padding: 0;
+}
+
+.pu-main-content {
+  padding: 75px 30px 30px 30px;
+}
+
+/* ── Admin Navbar ─────────────────────────────────────────── */
+.pu-navbar {
+  position: fixed;
+  top: 0;
+  left: var(--pu-sidebar-width);
+  right: 0;
+  height: var(--pu-navbar-height);
+  background-color: var(--pu-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  z-index: 99;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.pu-navbar-breadcrumb {
+  font-size: 14px;
+  color: var(--pu-text-muted);
+}
+
+.pu-navbar-breadcrumb strong {
+  color: var(--pu-text);
+  font-weight: 700;
+}
+
+.pu-navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.pu-search-bar {
+  display: flex;
+  align-items: center;
+  background-color: var(--pu-card-bg);
+  border: 1px solid var(--pu-border);
+  border-radius: var(--pu-radius);
+  padding: 8px 16px;
+  min-width: 200px;
+}
+
+.pu-search-bar input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--pu-text);
+  font-size: 14px;
+  width: 100%;
+  margin-left: 8px;
+}
+
+.pu-search-bar input::placeholder {
+  color: var(--pu-text-muted);
+}
+
+.pu-navbar-icon {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  cursor: pointer;
+  color: var(--pu-text-muted);
+  transition: var(--pu-transition);
+  background: transparent;
+  border: none;
+}
+
+.pu-navbar-icon:hover {
+  background-color: var(--pu-card-bg);
+}
+
+.pu-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: var(--pu-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* ── Cards ────────────────────────────────────────────────── */
+.pu-card {
+  background-color: var(--pu-card-bg);
+  border-radius: var(--pu-radius);
+  box-shadow: var(--pu-shadow);
+  padding: 22px;
+  transition: var(--pu-transition);
+  position: relative;
+  border: none;
+}
+
+.pu-card-header {
+  padding: 0 0 16px 0;
+}
+
+.pu-card-header h4,
+.pu-card-header h5,
+.pu-card-header h6 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--pu-text);
+  margin: 0;
+}
+
+.pu-card-body {
+  padding: 0;
+}
+
+/* ── Mini Statistics Card ─────────────────────────────────── */
+.pu-mini-stat {
+  min-height: 83px;
+}
+
+.pu-mini-stat .pu-stat-label {
+  font-size: 12px;
+  color: var(--pu-text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.pu-mini-stat .pu-stat-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--pu-text);
+}
+
+.pu-mini-stat .pu-stat-change {
+  font-size: 14px;
+  font-weight: 700;
+  margin-left: 8px;
+}
+
+.pu-mini-stat .pu-stat-change.positive {
+  color: var(--pu-green-400);
+}
+
+.pu-mini-stat .pu-stat-change.negative {
+  color: var(--pu-red-400);
+}
+
+.pu-mini-stat .pu-stat-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: var(--pu-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--pu-accent);
+  color: white;
+  flex-shrink: 0;
+}
+
+/* ── Chart Card ───────────────────────────────────────────── */
+.pu-chart-card {
+  background: linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%);
+  border-radius: var(--pu-radius);
+  padding: 22px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.pu-chart-card-light {
+  background-color: var(--pu-card-bg);
+}
+
+/* ── Tables ───────────────────────────────────────────────── */
+.pu-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pu-table thead th {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--pu-text-muted);
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--pu-border);
+  text-align: left;
+}
+
+.pu-table tbody td {
+  font-size: 14px;
+  color: var(--pu-text);
+  padding: 16px;
+  border-bottom: 1px solid var(--pu-border);
+  vertical-align: middle;
+}
+
+.pu-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.pu-table tbody tr {
+  transition: var(--pu-transition);
+}
+
+.pu-table tbody tr:hover {
+  background-color: rgba(56, 178, 172, 0.04);
+}
+
+.pu-table-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-right: 12px;
+  object-fit: cover;
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+.pu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  border-radius: var(--pu-radius);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--pu-transition);
+  border: none;
+  text-decoration: none;
+}
+
+.pu-btn-primary {
+  background-color: var(--pu-accent);
+  color: var(--pu-white);
+}
+
+.pu-btn-primary:hover {
+  background-color: var(--pu-accent-hover);
+  box-shadow: 0 4px 6px rgba(56, 178, 172, 0.4);
+}
+
+.pu-btn-outline {
+  background: transparent;
+  border: 1px solid var(--pu-border);
+  color: var(--pu-text);
+}
+
+.pu-btn-outline:hover {
+  border-color: var(--pu-accent);
+  color: var(--pu-accent);
+}
+
+/* ── Form Inputs ──────────────────────────────────────────── */
+.pu-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--pu-border);
+  border-radius: var(--pu-radius);
+  font-size: 14px;
+  color: var(--pu-text);
+  background-color: var(--pu-card-bg);
+  outline: none;
+  transition: var(--pu-transition);
+  font-family: 'Roboto', sans-serif;
+}
+
+.pu-input:focus {
+  border-color: var(--pu-accent);
+  box-shadow: 0 0 0 2px rgba(56, 178, 172, 0.2);
+}
+
+.pu-input::placeholder {
+  color: var(--pu-text-muted);
+}
+
+.pu-input-group {
+  position: relative;
+}
+
+.pu-input-group .pu-input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--pu-text-muted);
+}
+
+.pu-input-group .pu-input {
+  padding-left: 44px;
+}
+
+/* ── Timeline ─────────────────────────────────────────────── */
+.pu-timeline-item {
+  display: flex;
+  padding: 12px 0;
+  position: relative;
+}
+
+.pu-timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 40px;
+  bottom: -12px;
+  width: 2px;
+  background-color: var(--pu-border);
+}
+
+.pu-timeline-item:last-child::before {
+  display: none;
+}
+
+.pu-timeline-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 16px;
+  font-size: 14px;
+}
+
+.pu-timeline-content h6 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--pu-text);
+  margin: 0 0 4px 0;
+}
+
+.pu-timeline-content p {
+  font-size: 13px;
+  color: var(--pu-text-muted);
+  margin: 0;
+}
+
+.pu-timeline-time {
+  font-size: 12px;
+  color: var(--pu-text-muted);
+}
+
+/* ── Credit Card ──────────────────────────────────────────── */
+.pu-credit-card {
+  border-radius: var(--pu-radius);
+  padding: 28px 24px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  min-height: 180px;
+}
+
+.pu-credit-card-visa {
+  background: linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%);
+}
+
+.pu-credit-card-mastercard {
+  background: linear-gradient(81.62deg, #1f2733 2.25%, #2d3748 79.87%);
+}
+
+.pu-credit-card .card-number {
+  font-size: 18px;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+.pu-credit-card .card-holder {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.7;
+}
+
+.pu-credit-card .card-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.pu-credit-card .card-expiry {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+/* ── Badge ────────────────────────────────────────────────── */
+.pu-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.pu-badge-success {
+  background-color: rgba(72, 187, 120, 0.1);
+  color: var(--pu-green-400);
+}
+
+.pu-badge-danger {
+  background-color: rgba(245, 101, 101, 0.1);
+  color: var(--pu-red-400);
+}
+
+.pu-badge-info {
+  background-color: rgba(56, 178, 172, 0.1);
+  color: var(--pu-accent);
+}
+
+/* ── Separator ────────────────────────────────────────────── */
+.pu-separator {
+  height: 1px;
+  background-color: var(--pu-border);
+  margin: 8px 0;
+  border: none;
+}
+
+/* ── Theme Toggle ─────────────────────────────────────────── */
+.pu-theme-toggle {
+  width: 44px;
+  height: 24px;
+  border-radius: 12px;
+  background-color: var(--pu-gray-300);
+  cursor: pointer;
+  position: relative;
+  transition: var(--pu-transition);
+  border: none;
+}
+
+.pu-theme-toggle.active {
+  background-color: var(--pu-accent);
+}
+
+.pu-theme-toggle::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: white;
+  top: 3px;
+  left: 3px;
+  transition: var(--pu-transition);
+}
+
+.pu-theme-toggle.active::after {
+  left: 23px;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .pu-sidebar {
+    transform: translateX(-100%);
+  }
+  .pu-main-panel {
+    margin-left: 0;
+  }
+  .pu-navbar {
+    left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .pu-main-content {
+    padding: 75px 16px 16px 16px;
+  }
+  .pu-navbar {
+    padding: 0 16px;
+  }
+}
+
+/* ── Chart Container ──────────────────────────────────────── */
+.pu-chart-container {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+}
+
+/* ── Scrollbar ────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--pu-gray-300);
+  border-radius: 3px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: var(--pu-gray-600);
+}
+
+/* ── Platform Settings Toggle ─────────────────────────────── */
+.pu-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--pu-border);
+}
+
+.pu-toggle-row:last-child {
+  border-bottom: none;
+}
+
+.pu-toggle-label {
+  font-size: 14px;
+  color: var(--pu-text);
+}
+
+/* ── Project Card ─────────────────────────────────────────── */
+.pu-project-card {
+  display: flex;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--pu-border);
+}
+
+.pu-project-card:last-child {
+  border-bottom: none;
+}
+
+.pu-project-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--pu-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+
+/* ── RTL Support ──────────────────────────────────────────── */
+[dir="rtl"] .pu-sidebar {
+  left: auto;
+  right: 0;
+  border-right: none;
+  border-left: 1px solid var(--pu-border);
+}
+
+[dir="rtl"] .pu-main-panel {
+  margin-left: 0;
+  margin-right: var(--pu-sidebar-width);
+}
+
+[dir="rtl"] .pu-navbar {
+  left: 0;
+  right: var(--pu-sidebar-width);
+}
+
+[dir="rtl"] .pu-nav-link .pu-icon-box {
+  margin-right: 0;
+  margin-left: 12px;
+}
+
+@media (max-width: 1200px) {
+  [dir="rtl"] .pu-sidebar {
+    transform: translateX(100%);
+  }
+  [dir="rtl"] .pu-main-panel {
+    margin-right: 0;
+  }
+  [dir="rtl"] .pu-navbar {
+    right: 0;
+  }
+}
