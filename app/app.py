@@ -8,7 +8,7 @@ if str(SRC_PATH) not in sys.path:
     sys.path.insert(0, str(SRC_PATH))
 
 import dash
-from dash import html, dcc, Input, Output, callback
+from dash import html, dcc, Input, Output
 from app.config import get_config
 from app.components.sidebar import create_sidebar
 from app.components.navbar import AdminNavbar
@@ -57,7 +57,7 @@ app.layout = html.Div([
 
 
 # ── Router callback ─────────────────────────────────────────
-@callback(
+@app.callback(
     Output("page-content", "children"),
     Output("sidebar-container", "children"),
     Output("navbar-container", "children"),
